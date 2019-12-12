@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Inscription</title>
+    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+    
+</head>
+
+<body>
+    <div class="container-fluid">
+        <form>
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control notempty" id="nom" name="nom" placeholder="Nom">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir un nom.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prenom</label>
+                <input type="text" class="form-control notempty" id="prenom" name="prenom" placeholder="Prenom">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir un prenom.
+                </small>
+            </div>
+            <!-- <div class="form-group">
+                <label for="genre">Genre</label>
+                <select class="form-control" id="genre" name="genre">
+                    <option>H</option>
+                    <option>F</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zip">Date de naissance</label>
+                <input type="date" class="form-control" id="birth" name="zip">
+            </div>
+            <div class="form-group">
+                <label for="adresse">Adresse</label>
+                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse">
+            </div>
+            <div class="form-group">
+                <label for="zip">CP</label>
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="CP">
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville</label>
+                <input type="text" class="form-control" id="ville" name="ville" placeholder="Ville">
+            </div> -->
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control notempty" id="email" name="email" placeholder="Email">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir une adresse email valide.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" class="form-control notempty" id="pseudo" name="pseudo" placeholder="Pseudo">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir un pseudo.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control notempty" id="password" name="password" placeholder="Mot de Passe">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir un mot de passe.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="passconfirm">Confirm Password</label>
+                <input type="password" class="form-control notempty" id="passconfirm" name="passconfirm" placeholder="Confirmer mot de passe">
+                <small id="nomhelp" class="form-text text-danger d-none">
+                    Veuillez saisir un mot de passe.
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary" id="boutonSend" name="boutonSend">Envoyer</button>
+        </form>
+    </div>
+    <script src="libs/jq/jquery-3.4.1.min.js" defer></script>
+    <script src="libs/js/inscription.js" defer></script>
+
+</body>
+
+</html>
