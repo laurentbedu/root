@@ -116,13 +116,39 @@ for(let i=0; i<100; i++){
     });
 }
 
-
-
 $.getScript("../libs/js/classes.js", function(){
     console.log(variableDansClasses);
     myFunc();
 });
 //console.log(variableDansClasses);
+
+let req1 = $.get("../templates/req.php", data)//.done(function(response){
+    //$("#content-foot").html(response);
+//})
+let req2 = $.post("../templates/req.php", data)//.done(function(response){
+    //$("#content-foot").html(response);
+//})
+$.when(req1, req2).then(function (a1, a2) {
+    console.log(a1[0]);
+    console.log(a2[0]);
+    $("#content-foot").append(a1[0]);
+    $("#content-foot").append(a2[0]);
+    let bp;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
