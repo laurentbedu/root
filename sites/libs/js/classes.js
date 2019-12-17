@@ -64,6 +64,14 @@ class Category{
         this.nom = nom;
     }
 
+    //Converti un objet json en objet de type Category
+    static fromJsonObj(jsonObj){
+        return new Category(jsonObj.id, jsonObj.nom)
+    }
+    //converti un tableau d'objets json en tableau d'objets Category
+    static fromJsonObjArray(jsonObjArray){
+        return jsonObjArray.map(elt => Category.fromJsonObj(elt))
+    }
 
 }
 //Création de 2 objets de type (de la classe) Category :
@@ -74,8 +82,26 @@ let categories = [];
 categories.push(cat1, cat2);
 //Conversion de mon tableau categories en string json
 let categoriesJson = JSON.stringify(categories);
-
-
+//Envoi d'une requette ajax post vers req.php 
+//pour écrire le fichier json sur le serveur
+let dataToPostCategory = {
+    table: "categories",
+    data: categoriesJson
+}
+$.post("../templates/req.php", dataToPostCategory).done(function(resp){
+    //resp = reponse du serveur (ce que req.php renvoi)
+    let bp;
+});
+//Je vide le tableau categories
+categories = undefined;
+//Envoi d'une requette ajax post vers get_table.php
+//pour lire le fichier categories.json
+$.post("../templates/get_table.php",{table:"categories"}).done(function(resp){
+    //resp = reponse du serveur (ce que get_table.php renvoi)
+    categories = JSON.parse(resp);//Convertion du texte contenu dans resp en Json
+    categories = Category.fromJsonObjArray(categories); //Voir classe Category
+    let bp;
+})
 
 
 
