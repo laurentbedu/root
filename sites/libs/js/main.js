@@ -17,7 +17,7 @@ $("#newCategory").on('click', function(){
         $("#btnValid").on('click', function(){
             
             //récupérer les données du formulaire
-            let nom = ""; //... $('[data-field]="nom"')
+            let nom = ""; //... $('[data-field="nom"]')
             //créer un nouvel objet category,
             let categ = new Category(0, nom);
             //ajouter l'objet categ à Application.datas.categories
