@@ -54,6 +54,7 @@ $.post("../templates/get_table.php",{table:"products"}).done(function(resp){
     //resp = reponse du serveur (ce que get_table.php renvoi)
     products = JSON.parse(resp);//Convertion du texte contenu dans resp en Json
     products = Product.fromJsonObjArray(products); //Voir classe Products
+    console.log(products)//products est un tableau contenant 6 objets Product
     let bp;
 })
 
@@ -100,6 +101,7 @@ $.post("../templates/get_table.php",{table:"categories"}).done(function(resp){
     //resp = reponse du serveur (ce que get_table.php renvoi)
     categories = JSON.parse(resp);//Convertion du texte contenu dans resp en Json
     categories = Category.fromJsonObjArray(categories); //Voir classe Category
+    console.log(categories)//categories est un tableau contenant 2 objets Category
     let bp;
 })
 
