@@ -77,28 +77,48 @@ class Category{
         return jsonObjArray.map(elt => Category.fromJsonObj(elt))
     }
 
+    //Ajouter une catégorie
     insert(){
+        //Je fait une copie de l'objet Application.datas.categories
+        //dans une variable locale à insert() : categories
         let categories = Object.assign([],Application.datas.categories);
         //Application.datas.categories;
+
+        //je vérifie que la nouvelle catégorie n'existe pas déjà
         let sameElementInCategories = categories.filter(elt => elt === this);
         let exists =  sameElementInCategories.length == 1;
 
+        //Si la nouvelle catégorie (this) n'existe pas, 
+        //je vais l'écrire dans mon fichier categories.json
         if(!exists){
+            //Je récupère l'id max dans mon tableau de catégories
             let maxId = Math.max.apply(Math, categories.map(item => item.id));
+            //Je modifie l'id de ma nouvelle catégorie (this)
+            //(auto-incrément dans une base de données) id = max + 1
             this.id = maxId + 1;
+            //j'ajoute ma nouvelle catégorie avec le bon id
+            //dans mon tableau local temporaire : categories
             categories.push(this);
-
+            //Je défini les data pour le post
             let dataToPost = {
                 table: "categories",
                 data: JSON.stringify(categories)
             }
-            //return $.post();
+            
+            //je renvoi un post pour pouvoir effectuer
+            //d'autres actions après l'appel de .insert() 
             return $.post("../templates/req.php", dataToPost).done(function(resp){
+                //Si req.php me renvoi 1, c'est que tout c'est bien passé
+                //lors de l'écriture de mon fichier json
+                //je peux donc affecter mon tableau local temporaire 
+                //dans les données de mon application (Application.datas)
                 resp == 1 ? Application.datas.categories = categories : null;
             }).fail(function(error){
                 //refaire une requette ?
             })
         }
+        //Si la nouvelle catégorie existe je renvoi un post vide 
+        //pour pouvoir effectuer d'autres actions après l'appel de .insert() 
         return $.post();
     }
 

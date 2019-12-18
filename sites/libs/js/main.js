@@ -12,16 +12,23 @@ $.when(productRequest,categoryRequest).then(function(productResp, categoryResp){
     let bp;
 })
 
+
 $("#newCategory").on('click', function(){
+    //Je "navigue" verss la page category.html 
     $.post("../templates/category.html", null).done(function(resp){
+        //je récupère le contenu de category.html
+        //pour l'afficher dans mon #content-page
         $("#content-page").html(resp);
         $("#btnValid").on('click', function(){
-            
             //récupérer les données du formulaire
             let nom = $('[data-field="nom"]').val();
-            //créer un nouvel objet category,
+            //créer un nouvel objet category, puis l'insérer dans le fichier json
             let categ = new Category(0, nom).insert().done(function(resp){
+                //une fois l'insertion de ma nouvelle catégorie je "navigue"
+                //vers une page affichant la liste des catégories
                 $.post("../templates/categories.html").done(function(resp){
+                    //je récupère le contenu de categories.html
+                    //pour l'afficher dans mon #content-page
                     $("#content-page").html(resp);
                     //...
                 })
