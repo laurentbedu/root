@@ -1,3 +1,4 @@
+
 let Application = {};
 let productRequest = $.post("../templates/get_table.php", {table:"products"})
 let categoryRequest = $.post("../templates/get_table.php", {table:"categories"})
@@ -17,12 +18,15 @@ $("#newCategory").on('click', function(){
         $("#btnValid").on('click', function(){
             
             //récupérer les données du formulaire
-            let nom = ""; //... $('[data-field="nom"]')
+            let nom = $('[data-field="nom"]').val();
             //créer un nouvel objet category,
-            let categ = new Category(0, nom);
-            //ajouter l'objet categ à Application.datas.categories
-
-            //modifier, réécrire le fichier categories.json
+            let categ = new Category(0, nom).insert().done(function(resp){
+                $.post("../templates/categories.html").done(function(resp){
+                    $("#content-page").html(resp);
+                    //...
+                })
+            });
+            
 
         })
     })

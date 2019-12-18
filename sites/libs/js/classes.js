@@ -24,6 +24,8 @@ class Product{
     }
 
 }
+
+/*
 //Création de 6 objets de type (de la classe) Product :
 let prod1 = new Product(1, "Prise 220V", "...", 19.5, 1);
 let prod2 = new Product(2, "Raccord en cuivre diam 50", "...", 5, 2);
@@ -57,6 +59,7 @@ $.post("../templates/get_table.php",{table:"products"}).done(function(resp){
     console.log(products)//products est un tableau contenant 6 objets Product
     let bp;
 })
+*/
 
 //Classe Category
 class Category{
@@ -74,7 +77,34 @@ class Category{
         return jsonObjArray.map(elt => Category.fromJsonObj(elt))
     }
 
+    insert(){
+        let categories = Object.assign([],Application.datas.categories);
+        //Application.datas.categories;
+        let sameElementInCategories = categories.filter(elt => elt === this);
+        let exists =  sameElementInCategories.length == 1;
+
+        if(!exists){
+            let maxId = Math.max.apply(Math, categories.map(item => item.id));
+            this.id = maxId + 1;
+            categories.push(this);
+
+            let dataToPost = {
+                table: "categories",
+                data: JSON.stringify(categories)
+            }
+            //return $.post();
+            return $.post("../templates/req.php", dataToPost).done(function(resp){
+                resp == 1 ? Application.datas.categories = categories : null;
+            }).fail(function(error){
+                //refaire une requette ?
+            })
+        }
+        return $.post();
+    }
+
 }
+
+/*
 //Création de 2 objets de type (de la classe) Category :
 let cat1 = new Category(1, "Electricité");
 let cat2 = new Category(2, "Plomberie");
@@ -104,10 +134,7 @@ $.post("../templates/get_table.php",{table:"categories"}).done(function(resp){
     console.log(categories)//categories est un tableau contenant 2 objets Category
     let bp;
 })
-
-
-
-
+*/
 
 let bp;
 
