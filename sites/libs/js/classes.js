@@ -122,6 +122,10 @@ class Category{
         return $.post();
     }
 
+    update(variable){
+        
+    }
+
 }
 
 /*

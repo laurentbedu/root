@@ -30,7 +30,29 @@ $("#newCategory").on('click', function(){
                     //je récupère le contenu de categories.html
                     //pour l'afficher dans mon #content-page
                     $("#content-page").html(resp);
-                    //...
+                    $('[data-model="category"] [data-action="edit"]').on('click',function(){
+                        let currentId = $(this).closest('[data-table="category"]').find('[data-field="id"]').text();
+                        $.post("../templates/category.html",null).done(function(resp){
+                            $("#content-page").html(resp);
+                            //afficher les données de la catégorie
+                            
+                            //click valider
+
+                            //Ds Update :
+                            //-ecrire le json
+                            //-modifier app.datas.cat ...
+                        })
+                    })
+                    // for(let i = 0; i<Application.datas.categories.length;i++)
+                    for(let category of Application.datas.categories){
+                        let tableLine = $('[data-model="category"]').clone(true);
+                        $(tableLine).removeAttr('data-model');
+                        $(tableLine).find('[data-field="id"]').text(category.id);
+                        $(tableLine).find('[data-field="nom"]').text(category.nom);
+                        $('[data-display="categories"]').append(tableLine);
+
+                    }
+
                 })
             });
             
