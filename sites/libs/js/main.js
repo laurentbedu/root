@@ -35,9 +35,23 @@ $("#newCategory").on('click', function(){
                         $.post("../templates/category.html",null).done(function(resp){
                             $("#content-page").html(resp);
                             //afficher les données de la catégorie
-                            
+                            $("h3").text("Modifier Catégorie");
+                            $('[data-field="id"]').val(currentId);
+                            $('[data-field="nom"]').val(Category.byId(currentId).nom);
                             //click valider
+                            $("#btnValid").on('click', function(){
+                                let obj = {};
+                                $( "[data-field]" ).each(function(){//serialiser
+                                    let name  = $(this).attr("data-field");
+                                    obj[name] = $(this).val();
+                                })
+                                Category.byId(currentId).update(obj).done(function(){
+                                    $.post("../templates/categories.html").done(function(resp){
+                                        //to be continued ...
+                                    })
+                                });
 
+                            })
                             //Ds Update :
                             //-ecrire le json
                             //-modifier app.datas.cat ...
@@ -61,7 +75,9 @@ $("#newCategory").on('click', function(){
     })
 })
 
-
+$('#newProduct').on('click', function(){
+    
+})
 
 // //JQuery get
 // let data = {param1: "Hello", param2: "World"};

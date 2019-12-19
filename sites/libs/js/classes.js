@@ -77,6 +77,11 @@ class Category{
         return jsonObjArray.map(elt => Category.fromJsonObj(elt))
     }
 
+    static byId(id){
+        let tab = Application.datas.categories.filter(item => item.id == id);
+        return tab.length == 1 ? tab[0] : null;
+    }
+
     //Ajouter une catégorie
     insert(){
         //Je fait une copie de l'objet Application.datas.categories
@@ -119,11 +124,27 @@ class Category{
         }
         //Si la nouvelle catégorie existe je renvoi un post vide 
         //pour pouvoir effectuer d'autres actions après l'appel de .insert() 
-        return $.post();
+       
+        
+       
     }
 
-    update(variable){
-        
+    update(jsonObj){
+        //nouvel objet
+        let updated = Category.fromJsonObj(jsonObj);
+        //copier l'obj Application.datas.categories
+        let categories = Object.assign([], Application.datas.categories)
+        categories = 
+        categories.map(item => {return item.id == updated.id ? updated : item})
+
+        let dataToPost = {
+            table: "categories",
+            data: JSON.stringify(categories)
+        }
+        return $.post("../templates/req.php", dataToPost).done(function(resp){
+            Application.datas.categories = categories
+        });
+        //
     }
 
 }
