@@ -82,6 +82,20 @@ $('#newUser').on('click', function(){
     return;
 })
 
+$('#users').on('click', function(){
+    Application.navigate("users");
+    return;
+})
+
+$('#categories').on('click', function(){
+    Application.navigate("categories");
+    return;
+})
+$('#products').on('click', function(){
+    Application.navigate("products");
+    return;
+})
+
 // //JQuery get
 // let data = {param1: "Hello", param2: "World"};
 // $.get("../templates/req.php", data).done(function(response){
