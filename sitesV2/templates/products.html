@@ -1,0 +1,33 @@
+<h3 class="col-12">
+    Liste des produits
+</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" class="d-none">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Desc</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Cat.</th>
+            <th scope="col">Editer</th>
+        </tr>
+    </thead>
+    <tbody data-display="products">
+        
+    </tbody>
+</table>
+
+<table class="d-none">
+    <tr data-table="product" data-model="product">
+        <th scope="row" class="d-none" data-field="id"></th>
+        <td data-field="nom"></td>
+        <td data-field="description"></td>
+        <td data-field="prix"></td>
+        <td data-field="category_id"></td>
+        <td>
+            <button type="button" class="btn btn-success ml-2" data-action="edit">
+                Editer
+            </button>
+        </td>
+    </tr>
+</table>
