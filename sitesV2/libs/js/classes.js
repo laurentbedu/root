@@ -11,6 +11,8 @@ class Application{
 
     static navigate(page, obj){
         $.post("../templates/"+page+".html").done(function(resp){
+            localStorage.setItem('page',page);
+            localStorage.setItem('obj',obj);
             //Affichage du contenu de la page
             $("#content-page").html(resp);
             //
@@ -33,17 +35,19 @@ class Application{
             //Initialisation des events
             $('[data-action]').each(function(){
                 $(this).on('click', function(){
+                    let currentTable, currentList, currentId, currentFilter,currentObj;
+
                     switch ($(this).attr("data-action")){
                         case "insertOrUpdate" :
                             obj.insertOrUpdate();
                             break;
                         case "delete" :
-                            let currentTable = $(this).closest('[data-table]').attr('data-table')
-                            let currentList = $(this).closest('[data-display]').attr('data-display')
-                            let currentId = $(this).closest('[data-table]').find('[data-field="id"]').text();
-                            let currentFilter = Application.datas[currentList]
+                            currentTable = $(this).closest('[data-table]').attr('data-table')
+                            currentList = $(this).closest('[data-display]').attr('data-display')
+                            currentId = $(this).closest('[data-table]').find('[data-field="id"]').text();
+                            currentFilter = Application.datas[currentList]
                                 .filter(item => item.id == currentId);
-                            let currentObj = currentFilter.length == 1 ? currentFilter[0] : null;
+                            currentObj = currentFilter.length == 1 ? currentFilter[0] : null;
                             //Application.navigate(currentTable, currentObj)
                             currentObj.delete(); 
                             break;

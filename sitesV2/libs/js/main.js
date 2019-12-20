@@ -5,6 +5,11 @@ Application.loadDatas().then(function(productResponse, categoryResponse, userRes
         categories : Category.fromJsonObjArray(JSON.parse(categoryResponse[0])),
         users : User.fromJsonObjArray(JSON.parse(userResp[0]))
     }
+    let page = localStorage.getItem('page');
+    let obj = localStorage.getItem('obj');
+    if(page){
+        Application.navigate(page, obj);
+    }
 })
 
 
