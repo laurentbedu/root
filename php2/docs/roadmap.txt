@@ -1,0 +1,49 @@
+1. deconnection.php
+
+2. ajouter les conditions sur les actions possibles en fonction du rôle
+isset($_SESSION['role']) : connecté / déconnecté
+$_SESSION['role'] == 1 : admin / visiteur
+
+3. créer la table "role"
+
+4. verifier l'interclassement des tables et colonnes : utf8_general_ci
+
+5. verifier le type des table pour l'ajout des clés étrangères : innoDB 
+
+4. Ajouter les 'foreign keys' : 
+ALTER TABLE t1
+ADD FOREIGN KEY (t2_id) REFERENCES t2(id);
+
+5. Ajouter l'envoi d'email lors de l'inscription
+-> http://blog.techwheels.net/send-email-from-localhost-wamp-server-using-sendmail/
+- copier sendmail.zip vers : wamp64/sendmail
+- compte gmail : 
+    ! Activer imap protocol
+    ! Activer Accès moins sécurisé des applications dans compte google>sécurité
+    d2wm.afpa.lievin@gmail.com
+    H$cm&KA3Q1PS$lRJNGCE
+- sendmail.ini
+- php.ini
+- restart wamp server
+- test email :-)
+
+5b. Modifier la table user : 
+    ALTER TABLE `user` ADD `token` VARCHAR(255) NOT NULL AFTER `password`;
+
+
+5c. Modifier inscription.php (token + email)
+5d. Modifier connection.php (token='')
+
+6. ajout image sur page produit.php
+6b. modif image sur page produit.php (facultatif)
+
+
+
+
+
+
+
+
+
+
+
