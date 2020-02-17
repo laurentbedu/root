@@ -1,0 +1,11 @@
+MVC
+
+1. Créer la structure du site :
+    -index.php
+    -application
+        -config
+        -controller
+        -model
+        -view
+    -public
+        etc ...
