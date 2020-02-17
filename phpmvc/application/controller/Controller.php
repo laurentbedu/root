@@ -30,12 +30,12 @@ public static function init(){
             case 'allproducts':
                 $datas = Product::selectAll();
                 //var_dump($datas);
-                $pageToDisplay = View::getContent('allproducts',$datas);
+                self::$pageToDisplay = View::getContent('allproducts',$datas);
                 //$pageToDisplay = AllProductView::getContent($datas);
             break;
             case 'showproduct':
-                
-                $pageToDisplay = View::getContent('showproduct',$datas);
+                $datas = Product::selectOne();
+                self::$pageToDisplay = View::getContent('showproduct',$datas);
                 //$pageToDisplay = ShowProductView::getContent($datas);
             break;
             default : //accueil
@@ -49,8 +49,10 @@ public static function init(){
 
 }
 
+private static $pageToDisplay;
 public static function display(){
-    echo 'Controller display';
+    return self::$pageToDisplay;
+
 }
 
 }

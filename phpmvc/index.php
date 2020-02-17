@@ -13,7 +13,7 @@
     <div class="container-fluid">
     <a href="index.php?r=allproducts">Voir tous les produits</a><br>
     <a href="index.php?r=showproduct&i=3">Voir le produit avec id=3</a><br>
-    <?php
+    <?=
         Controller::display();
     ?>
     </div>
