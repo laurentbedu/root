@@ -29,10 +29,14 @@ public static function init(){
         switch($route){
             case 'allproducts':
                 $datas = Product::selectAll();
-                var_dump($datas);
+                //var_dump($datas);
+                $pageToDisplay = View::getContent('allproducts',$datas);
+                //$pageToDisplay = AllProductView::getContent($datas);
             break;
             case 'showproduct':
                 
+                $pageToDisplay = View::getContent('showproduct',$datas);
+                //$pageToDisplay = ShowProductView::getContent($datas);
             break;
             default : //accueil
                 echo 'accueil';
