@@ -29,6 +29,7 @@ public static function init(){
         switch($route){
             case 'allproducts':
                 $datas = Product::selectAll();
+                var_dump($datas);
             break;
             case 'showproduct':
                 
