@@ -9,3 +9,12 @@ MVC
         -view
     -public
         etc ...
+
+    2. Créer le controleur principal (frontal, routeur)
+        application/controller/Controller.php
+
+    3. Créer les fonction init() et display() de Controller et les appeler dans index.php
+
+    4. fonction init() de Controller :
+        -session start
+        -autoload des classes
