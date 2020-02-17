@@ -18,3 +18,8 @@ MVC
     4. fonction init() de Controller :
         -session start
         -autoload des classes
+        -réccupération de $_GET pour choisir model et view en fonction de la routeur
+    
+    5. créer la classe Config avec les variables nécessaires à la connection DB
+
+    6. créer la classe Model qui va gérer les interactions avec DB

@@ -28,7 +28,7 @@ public static function init(){
         //
         switch($route){
             case 'allproducts':
-
+                $datas = Product::selectAll();
             break;
             case 'showproduct':
                 

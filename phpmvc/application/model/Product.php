@@ -1,4 +1,7 @@
 <?php
-class Product{
+class Product extends Model{
     
+    public static function selectAll(){
+
+    }
 }
