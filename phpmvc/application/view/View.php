@@ -6,9 +6,11 @@ class View{
             ob_start();
             require 'application/templates/allproducts.php';
             return ob_get_clean();
-            // ob_clean();
-            // return $page;
-
+        }
+        if($route == 'showproduct'){
+            ob_start();
+            require 'application/templates/showproduct.php';
+            return ob_get_clean();
         }
     }
 

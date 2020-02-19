@@ -34,7 +34,7 @@ public static function init(){
                 //$pageToDisplay = AllProductView::getContent($datas);
             break;
             case 'showproduct':
-                $datas = Product::selectOne();
+                $datas = Product::selectOne($id);
                 self::$pageToDisplay = View::getContent('showproduct',$datas);
                 //$pageToDisplay = ShowProductView::getContent($datas);
             break;
